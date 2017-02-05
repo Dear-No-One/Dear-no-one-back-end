@@ -1,5 +1,6 @@
 # Dear-no-one-back-end
 
+Work-in-progress back-end for the Dear No One blogging platform.
 
 #### The Amanda Show Style Guide
 
