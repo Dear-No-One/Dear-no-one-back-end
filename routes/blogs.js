@@ -5,6 +5,10 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
+    if (req.headers['authorization'] !== "Bearer some bs") {
+      return res.status(401).send('Unauthorized');
+    }
+
     return knex("post")
         .then(data => {
             var result = {
