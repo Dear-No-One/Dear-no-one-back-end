@@ -7,6 +7,7 @@ var knex = require('../db/knex');
 
 
 router.post('/', function(req, res, next) {
+  console.log(req.body);
 
   return knex('member').where('email', req.body.email).first()
       .then(function(member) {
