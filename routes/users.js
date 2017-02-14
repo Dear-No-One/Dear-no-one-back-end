@@ -14,4 +14,15 @@ router.get('/', function(req, res, next) {
         });
 });
 
+router.get('/:id', function(req, res, next) {
+    let id = req.params.id
+    return knex("member").where('id', id).first()
+        .then(data => {
+            var result = {
+                user: data
+            };
+            res.json(result);
+        });
+});
+
 module.exports = router;
