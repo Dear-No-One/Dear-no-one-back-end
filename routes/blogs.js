@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     return knex("post")
         .then(data => {
             var result = {
-                post: data
+                blogs: data
             };
             res.json(result);
         });
