@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var config = require('../config')
+var app = express();
+
+app.set('superSecret', config.secret);
 
 /* GET users listing. */
 var knex = require('../db/knex');
 
 router.get('/', function(req, res, next) {
-    if (req.headers['authorization'] !== "Bearer some bs") {
+console.log(req.headers['authorization'])
+    if (req.headers['authorization'] !== app.get('superSecret')) {
       return res.status(401).send('Unauthorized');
     }
 
