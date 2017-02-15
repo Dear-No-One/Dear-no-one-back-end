@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var jwt = require('jsonwebtoken');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
