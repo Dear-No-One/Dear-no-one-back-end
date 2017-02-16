@@ -13,14 +13,6 @@ var knex = require('../db/knex');
 var secret = app.get('superSecret')
 
 router.get('/', function(req, res, next) {
-  // var token = req.headers['authorization']
-  // var somestuff = jwt.decoded(token)
-  // // console.log(somestuff);
-  // console.log('one ', app.get('superSecret'));
-  // console.log('two ', req.headers['authorization']);
-  //   if (req.headers['authorization'] !== 'Bearer ' + secret ) {
-  //     return res.status(401).send('Unauthorized');
-  //   }
   if (!(req.headers && req.headers.authorization)) {
     return res.status(400).json({
       status: 'Please log in'
@@ -55,16 +47,22 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
-// jwt.verify(token, app.get('superSecret'), function(err, decoded) {
-//   if (err) {
-//     return res.json({ success: false, message: 'Failed to authenticate token.' });
-//   } else {
-//     // if everything is good, save to request for use in other routes
-//     req.decoded = decoded;
-//     next();
-//   }
-// });
-// {fuck : 'fuck'}
+router.post('/', function(req, res, next) {
+    console.log(req.body);
+    knex('post').insert({
+        title: req.body.blog.title,
+        body: req.body.blog.body,
+        image_url: 'https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg',
+        date_posted: new Date(),
+        member_id: 1,
+        category_id: 1
+    }).returning('*')
+        .then(data => {
+        var result = {
+            blog: data
+        };
+        res.json(result);
+    });
+});
 
 module.exports = router;
