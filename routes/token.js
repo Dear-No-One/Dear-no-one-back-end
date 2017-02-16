@@ -46,7 +46,7 @@ router.post('/', (req, res, next) => {
   })
   .then((response) => { console.log(response, " 1"); return localAuth.encodeToken(response); })
   .then((token) => {
-    console.log(response, " 2");
+    console.log(token, " 2");
     res.status(200).json({
       status: 'success',
       token: token

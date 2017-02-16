@@ -2,6 +2,7 @@ const moment = require('moment');
 const jwt = require('jwt-simple');
 
 function encodeToken(user) {
+  console.log(user);
   const playload = {
     exp: moment().add(14, 'days').unix(),
     iat: moment().unix(),
