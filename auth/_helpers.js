@@ -6,20 +6,20 @@ function createUser(req) {
   const hash = bcrypt.hashSync(req.body.signup.password, 10);
   return knex('member')
   .insert({
-    username: req.body.signup.username,
-    email: req.body.signup.email,
+    username: req.body.member.username,
+    email: req.body.member.email,
     password: hash,
     dateCreated: new Date(),
     isActive:true,
-    bio:req.body.signup.bio,
-    category:req.body.signup.category,
-    template:req.body.signup.template,
-    theme:req.body.signup.theme,
-    profilePic:req.body.signup.profilePic,
-    blogPic:req.body.signup.blogPic,
-    facebook:req.body.signup.facebook,
-    twitter:req.body.signup.twitter,
-    instagram:req.body.signup.instagram
+    bio:req.body.member.bio,
+    category:req.body.member.category,
+    template:req.body.member.template,
+    theme:req.body.member.theme,
+    profilePic:req.body.member.profilePic,
+    blogPic:req.body.member.blogPic,
+    facebook:req.body.member.facebook,
+    twitter:req.body.member.twitter,
+    instagram:req.body.member.instagram
   })
   .returning('*');
 }
