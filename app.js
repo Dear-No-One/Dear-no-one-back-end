@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var blogs = require('./routes/blogs');
 var token = require('./routes/token');
+var members = require('./routes/members')
 
 
 var app = express();
@@ -33,6 +34,7 @@ app.use('/api/', index);
 app.use('/api/users', users);
 app.use('/api/blogs', blogs);
 app.use('/api/token', token);
+app.use('/api/members', members);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
