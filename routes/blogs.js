@@ -52,10 +52,9 @@ router.post('/', function(req, res, next) {
     knex('post').insert({
         title: req.body.blog.title,
         body: req.body.blog.body,
-        image_url: 'https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg',
-        date_posted: new Date(),
-        member_id: 1,
-        category_id: 1
+        datePosted: new Date(),
+        memberId: 1,
+        categoryId: 1
     }).returning('*')
         .then(data => {
         var result = {
