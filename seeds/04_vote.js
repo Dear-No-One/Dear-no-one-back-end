@@ -6,12 +6,12 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       var votes = [{
         id: 1,
-        post_id: 2,
-        member_id: 2,
+        postId: 2,
+        memberId: 2,
       }, {
         id: 2,
-        post_id: 1,
-        member_id: 1,
+        postId: 1,
+        memberId: 1,
       }];
       return knex('vote').insert(votes);
     });

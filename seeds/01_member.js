@@ -9,15 +9,19 @@ exports.seed = function(knex, Promise) {
         username: 'sam',
         email: 'sam@gmail.com',
         password: bcrypt.hashSync('sammyg21', 10),
-        date_created: new Date(),
+        dateCreated: new Date(),
         bio: 'Sam is the man',
+        category: 1,
+        template: 1
       }, {
         id: 2,
         username: 'alex',
         email: 'alex@gmail.com',
-        password: bcrypt.hashSync('alexmart05', 10),
-        date_created: new Date(),
+        password: bcrypt.hashSync('123', 10),
+        dateCreated: new Date(),
         bio: 'Alex is not the man',
+        category: 2,
+        template: 2
       }];
       return knex('member').insert(members);
     });
