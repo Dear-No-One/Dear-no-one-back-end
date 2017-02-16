@@ -3,7 +3,7 @@ const knex = require('../db/knex');
 var localAuth = require('./local')
 
 function createUser(req) {
-  const hash = bcrypt.hashSync(req.body.signup.password, 10);
+  const hash = bcrypt.hashSync(req.body.member.password, 10);
   return knex('member')
   .insert({
     username: req.body.member.username,
@@ -12,7 +12,7 @@ function createUser(req) {
     dateCreated: new Date(),
     isActive:true,
     bio:req.body.member.bio,
-    category:req.body.member.category,
+    category: 1,
     template:req.body.member.template,
     theme:req.body.member.theme,
     profilePic:req.body.member.profilePic,
