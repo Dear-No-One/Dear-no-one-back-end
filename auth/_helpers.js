@@ -1,17 +1,31 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const knex = require('../db/knex');
 var localAuth = require('./local')
 
 function createUser(req) {
-  const salt = bcrypt.genSaltSync();
-  const hash = bcrypt.hashSync(req.body.password, salt);
+  const hash = bcrypt.hashSync(req.body.signup.password, 10);
   return knex('member')
   .insert({
-    email: req.body.email,
-    password: hash
+    username: req.body.signup.username,
+    email: req.body.signup.email,
+    password: hash,
+    dateCreated: new Date(),
+    isActive:true,
+    bio:req.body.signup.bio,
+    category:req.body.signup.category,
+    template:req.body.signup.template,
+    theme:req.body.signup.theme,
+    profilePic:req.body.signup.profilePic,
+    blogPic:req.body.signup.blogPic,
+    facebook:req.body.signup.facebook,
+    twitter:req.body.signup.twitter,
+    instagram:req.body.signup.instagram
   })
   .returning('*');
 }
+
+
+
 function getUser(email) {
   return knex('member').where({email}).first();
 }
