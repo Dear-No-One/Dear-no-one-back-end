@@ -52,7 +52,7 @@ function ensureAuthenticated(req, res, next) {
       });
     } else {
       // check if the user still exists in the db
-      return knex('users').where({id: parseInt(payload.sub)}).first()
+      return knex('users').where({id: parseInt(payload.member.id)}).first()
       .then((user) => {
         next();
       })
