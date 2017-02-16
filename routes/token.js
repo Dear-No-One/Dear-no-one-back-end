@@ -41,6 +41,7 @@ router.post('/', (req, res, next) => {
   console.log(req.body);
   return authHelpers.getUser(email)
   .then((response) => {
+    console.log(response);
     authHelpers.comparePass(password, response.password);
     return response;
   })
