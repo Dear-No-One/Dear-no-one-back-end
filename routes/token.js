@@ -38,6 +38,7 @@ var localAuth = require('../auth/local')
 router.post('/', (req, res, next) => {
   const email = req.body.auth.email;
   const password = req.body.auth.password;
+  console.log(req.body);
   return authHelpers.getUser(email)
   .then((response) => {
     authHelpers.comparePass(password, response.password);
