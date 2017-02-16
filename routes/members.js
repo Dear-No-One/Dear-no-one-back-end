@@ -12,10 +12,11 @@ router.post('/', (req, res, next)  => {
   return authHelpers.createUser(req)
   .then((member) => { return localAuth.encodeToken(member[0]); })
   .then((token) => {
-    res.status(200).json({
-      status: 'success',
-      token: token
-    });
+    localAuth.decodeToken(token, (err, payload) => {
+        res.status(200).json({
+          member: payload.member
+        });
+    })
   })
   .catch((err) => {
     res.status(500).json({

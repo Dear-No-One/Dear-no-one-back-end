@@ -28,12 +28,13 @@ router.get('/', function(req, res, next) {
         });
       } else {
         // check if the user still exists in the db
-        return knex('member').where({id: parseInt(payload.sub)}).first()
+        return knex('member').where({id: parseInt(payload.member.id)}).first()
         .then((member) => {
           return knex("post")
               .then(data => {
                   var result = {
-                      blogs: data
+                      blogs: data,
+                      members: member
                   };
                   res.json(result);
               });
