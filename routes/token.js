@@ -41,18 +41,19 @@ router.post('/', (req, res, next) => {
   console.log(req.body);
   return authHelpers.getUser(email)
   .then((response) => {
-    console.log(response);
     authHelpers.comparePass(password, response.password);
     return response;
   })
-  .then((response) => { return localAuth.encodeToken(response); })
+  .then((response) => { console.log(response, " 1"); return localAuth.encodeToken(response); })
   .then((token) => {
+    console.log(response, " 2");
     res.status(200).json({
       status: 'success',
       token: token
     });
   })
   .catch((err) => {
+    console.log(err);
     res.status(500).json({
       message: err,
       status: 'error'
