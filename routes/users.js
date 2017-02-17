@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var reform = require('../functions/reformateUser').reformMember;
-
 /* GET users listing. */
 var knex = require('../db/knex');
 
@@ -14,30 +12,6 @@ var knex = require('../db/knex');
 //             res.json(result);
 //         });
 // });
-
-router.get('/', (req, res, next) => {
-    knex('member')
-        .select(
-            'member.id as memberId',
-            'member.username',
-            'member.email',
-            'member.password',
-            'member.bio',
-            'member.template',
-            'member.theme',
-            'member.profilePic',
-            'member.blogPic',
-            'member.facebook',
-            'member.twitter',
-            'member.instagram',
-            'post.id as postId')
-        .join('post', 'post.memberId', 'member.id')
-        .then(data => {
-          const reformatted = reform(data)
-            res.json(reformatted);
-            // res.json(reformatted);
-        });
-});
 
 router.get('/:id', function(req, res, next) {
     let id = req.params.id
