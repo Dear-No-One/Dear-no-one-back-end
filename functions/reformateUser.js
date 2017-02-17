@@ -3,7 +3,11 @@ function reformMember (member) {
     const memberById = {};
     member.forEach(member => {
         if(memberById[member.memberId]){
-            memberById[member.memberId].blogs.push(member.postId);
+            memberById[member.memberId].blogs.push({
+                postId:member.postId,
+                postTitle:member.title,
+                postBody:member.body
+            });
     }
         else {
         memberById[member.memberId] = {
@@ -19,7 +23,11 @@ function reformMember (member) {
             facebook: member.facebook,
             twitter: member.twitter,
             instagram: member.instagram,
-            blogs: [member.postId]
+            blogs: [{
+                postId:member.postId,
+                postTitle:member.title,
+                postBody:member.body
+            }]
         };
         reformatted.push(memberById[member.memberId]);
         }

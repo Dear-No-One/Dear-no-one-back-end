@@ -29,13 +29,14 @@ router.get('/', function(req, res, next) {
       } else {
         // check if the user still exists in the db
         return knex('member').where({id: parseInt(payload.member.id)}).first()
-        .then((member) => {
+        .then((logged) => {
           return knex("post")
               .then(data => {
                   var result = {
                       blogs: data,
-                      members: member
+                      logged: logged
                   };
+                  console.log(result);
                   res.json(result);
               });
         })
@@ -54,7 +55,7 @@ router.post('/', function(req, res, next) {
         title: req.body.blog.title,
         body: req.body.blog.body,
         datePosted: new Date(),
-        memberId: 1,
+        memberId: req.body.blog.memberId,
         categoryId: 1
     }).returning('*')
         .then(data => {

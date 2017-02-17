@@ -42,7 +42,9 @@ router.get('/', (req, res, next) => {
             'member.facebook',
             'member.twitter',
             'member.instagram',
-            'post.id as postId')
+            'post.id as postId',
+            'post.title',
+            'post.body')
         .join('post', 'post.memberId', 'member.id')
         .then(data => {
           const reformatted = reform(data)
@@ -69,7 +71,9 @@ router.get('/:id', (req, res, next) => {
             'member.facebook',
             'member.twitter',
             'member.instagram',
-            'post.id as postId')
+            'post.id as postId',
+            'post.title',
+            'post.body')
             .where('memberId', id)
         .join('post', 'post.memberId', 'member.id')
         .then(data => {
