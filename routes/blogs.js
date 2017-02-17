@@ -65,5 +65,16 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.get('/:id', function(req, res, next) {
+    let id = req.params.id
+    return knex("post").where('id', id).first()
+        .then(data => {
+            var result = {
+                blog: data
+            };
+            console.log(result);
+            res.json(result);
+        });
+});
 
 module.exports = router;
