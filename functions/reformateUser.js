@@ -7,7 +7,7 @@ function reformMember (member) {
     }
         else {
         memberById[member.memberId] = {
-            memberId: member.memberId,
+            id: member.memberId,
             username: member.username,
             email: member.email,
             password: member.password,

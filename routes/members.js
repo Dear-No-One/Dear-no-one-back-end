@@ -46,7 +46,9 @@ router.get('/', (req, res, next) => {
         .join('post', 'post.memberId', 'member.id')
         .then(data => {
           const reformatted = reform(data)
-            res.json(reformatted);
+            res.json({
+                members: reformatted
+              });
             // res.json(reformatted);
         });
 });
