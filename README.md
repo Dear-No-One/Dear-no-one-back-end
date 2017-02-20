@@ -23,7 +23,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 ### Installing
-NOTE: You will need to clone both this server repo and the client repo at (https://github.com/stackOfAllTrades/Client)
+NOTE: You will need to clone both this server repo and the client repo at (https://github.com/Dear-No-One/Dear-no-one-frontend)
 
 * Fork and clone this repo
 * `$ cd` into the folder and `$ npm install`
