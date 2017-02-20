@@ -1,7 +1,7 @@
 # Server
 ## Dear No One 
 
-This project is live at ().
+This project is live at (https://dearnooneq3.firebaseapp.com/).
 
 Dear No One is a web app that was created to be a blogging platform. The design is to enable users with no tech know how to create and maintain a blog free of charge. The app offers a clean UI/UX expierence for bloggers to quickly create there very own blog. With multiple templete and color themes to choose from the blogger can design a more personal feel to thier page. 
 
