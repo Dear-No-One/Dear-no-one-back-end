@@ -27,7 +27,7 @@ NOTE: You will need to clone both this server repo and the client repo at (https
 
 * Fork and clone this repo
 * `$ cd` into the folder and `$ npm install`
-* Create a PSQL database named `dear-no-one`
+* Create a PSQL database named `dear_no_one`
 * Run `$ knex migrate:latest` and `$ knex seed:run`
 * See the `example.env` file for needed Environment variables
   * Don't forget to create your own `.env` file with your project's specific Environment variables
